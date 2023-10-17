@@ -1,5 +1,5 @@
 {
-  "name": "loggify",
+  "name": "shell-artist",
   "version": "0.1.0",
   "types": "./dist/types/index.d.ts",
   "main": "./dist/lib/index.js",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@modern-js/module-tools": "2.36.0",
     "@modern-js/eslint-config": "2.36.0",
-    "@modern-js/tsconfig":"2.36.0",
+    "@modern-js/tsconfig": "2.36.0",
     "@modern-js-app/eslint-config": "2.36.0",
     "typescript": "~5.0.4",
     "@types/jest": "~29.2.4",
