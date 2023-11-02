@@ -4,7 +4,7 @@ import { has, get } from 'node-emoji';
 import gradient from 'gradient-string';
 import chalkAnimation, { Animation } from 'chalk-animation';
 import boxen from 'boxen';
-import { TStylizeTextConfig, IShellArtistConfig } from './types';
+import { TStylizeTextConfig, IShellArtistConfig, TStatus } from './types';
 import { isTPrebuiltGradients } from './helpers';
 
 function stylizeText(msg: string, config?: TStylizeTextConfig): string {
@@ -51,11 +51,7 @@ function stylizeText(msg: string, config?: TStylizeTextConfig): string {
   return text;
 }
 
-function statusMsg(
-  msg: string,
-  config?: TStylizeTextConfig,
-  status?: TStylizeTextConfig['status'],
-) {
+function statusMsg(msg: string, config?: TStylizeTextConfig, status?: TStatus) {
   switch (status) {
     case 'warn':
       console.warn(stylizeText(msg, { ...config, color: 'yellowBright' }));
@@ -77,7 +73,7 @@ function statusMsg(
 
 const g = gradient;
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
-export default class ShellArtist {
+export default class sa {
   static log(msg: string, config?: TStylizeTextConfig): void {
     statusMsg(msg, config);
   }
@@ -102,9 +98,14 @@ export default class ShellArtist {
     return ora(stylizeText(msg, config)).start();
   }
 
-  static stop(ora: Ora, msg: string, config?: TStylizeTextConfig): void {
+  static stop(
+    ora: Ora,
+    msg: string,
+    config?: TStylizeTextConfig,
+    status?: TStatus,
+  ): void {
     const txt = stylizeText(msg, config);
-    switch (config?.status) {
+    switch (status) {
       case 'warn':
         ora.warn(txt);
         break;

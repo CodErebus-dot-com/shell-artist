@@ -40,6 +40,7 @@ interface TBox {
   titleAlignment?: 'left' | 'right' | 'center';
 }
 
+type TStatus = 'warn' | 'info' | 'success' | 'error';
 /**
  * @name TStylizeTextConfig
  * @description type def for stylizeText function config parameter
@@ -50,7 +51,6 @@ interface TStylizeTextConfig {
   modifier?: typeof Modifiers;
   box?: TBox;
   emoji?: string;
-  status?: 'warn' | 'info' | 'success' | 'error';
 }
 
 /**
@@ -67,6 +67,7 @@ export {
   TPrebuiltAnimations,
   TGradient,
   TAnimation,
+  TStatus,
   TStylizeTextConfig,
   IShellArtistConfig,
 };
