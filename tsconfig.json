@@ -1,12 +1,30 @@
 {
-  "extends": "@modern-js/tsconfig/base",
   "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "module": "commonjs",
-    "esModuleInterop": true
+    "types": ["node"],
+    "moduleResolution": "Node",
+    "module": "CommonJS",
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "allowUnreachableCode": false,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "useUnknownInCatchVariables": false,
+    "alwaysStrict": true,
+    "noImplicitReturns": true
   },
   "include": ["src"],
   "exclude": ["**/node_modules"]
