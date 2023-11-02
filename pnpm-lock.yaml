@@ -46,9 +46,6 @@ devDependencies:
   copyfiles:
     specifier: ^2.4.1
     version: 2.4.1
-  husky:
-    specifier: ~8.0.1
-    version: 8.0.3
   lint-staged:
     specifier: ~13.1.0
     version: 13.1.4
