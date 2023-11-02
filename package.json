@@ -1,6 +1,6 @@
 {
   "name": "shell-artist",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "module",
