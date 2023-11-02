@@ -8,6 +8,13 @@ ShellArtist is a package that provides a simplified logging API. It takes some o
 - [Use Cases](#use-cases)
 - [Packages Used](#packages-used)
 - [Usage](#usage)
+  - [Installation](#installation)
+  - [Default Log](#default-log)
+  - [With config object](#with-config-object)
+  - [Spinner](#spinner)
+  - [Log Levels](#log-levels)
+  - [Gradient](#gradient)
+  - [Animations](#animations)
 
 ## Features
 
@@ -35,72 +42,114 @@ ShellArtist is a package that provides a simplified logging API. It takes some o
 
 ## Usage
 
-- Install the package
+### Installation
 
-  ```bash
-  # using npm
-  npm i shell-artist
+```bash
+# using npm
+npm i shell-artist
 
-  # using yarn
-  yarn add shell-artist
+# using yarn
+yarn add shell-artist
 
-  # using pnpm
-  pnpm add shell-artist
-  ```
+# using pnpm
+pnpm add shell-artist
+```
 
-- Use it in your app
+### Default Log
 
-  ```typescript
-  import sa from 'shell-artist';
-  import { setTimeout as sleep } from 'node:timers/promises';
+```typescript
+import sa from 'shell-artist';
 
-  // default log
-  sa.log('Hello World');
+sa.log('Hello World');
+```
 
-  // log with the config object
-  sa.log(' MY CLI APP ', {
-    bgColor: 'bgGreenBright', // https://github.com/chalk/chalk/tree/main#background-colors,
-    color: 'white', // https://github.com/chalk/chalk/tree/main#colors
-    modifier: 'bold', // https://github.com/chalk/chalk/tree/main#modifiers
-    emoji: 'rocket', // https://github.com/muan/emojilib/blob/main/dist/emoji-en-US.json,
-    box: {
-      title: 'package update',
-      borderColor: 'green',
-      style: 'double' // https://github.com/sindresorhus/boxen/tree/main#borderstyle (default - 'single')
-      padding: 2, // default - 1
-      margin: 2, // default - 1
-      dimBorder: true, // default - false
-      textAligment: 'center', // default - 'center'
-      titleAlignment: 'left' // default - 'center'
-    }
-  });
+### With `config` object
 
-  // prebuilt log level status
-  sa.warn('CAUTION');
-  sa.error('FAILURE');
-  sa.info('INFO');
-  // with the config object
-  sa.success(' SUCCESS ', {
-    box: {
-      title: 'success',
-      borderColor: 'green',
-    },
-    modifier: 'bold',
-  });
+```typescript
+import sa from 'shell-artist';
 
-  // spinner for async processes
-  const spinner = sa.start('Installing dependencies...');
+sa.log(' MY CLI APP ', {
+  bgColor: 'bgGreenBright', // https://github.com/chalk/chalk/tree/main#background-colors,
+  color: 'white', // https://github.com/chalk/chalk/tree/main#colors
+  modifier: 'bold', // https://github.com/chalk/chalk/tree/main#modifiers
+  emoji: 'rocket', // https://github.com/muan/emojilib/blob/main/dist/emoji-en-US.json,
+  box: {
+    title: 'package update',
+    borderColor: 'green',
+    style: 'double' // https://github.com/sindresorhus/boxen/tree/main#borderstyle (default - 'single')
+    padding: 2, // default - 1
+    margin: 2, // default - 1
+    dimBorder: true, // default - false
+    textAligment: 'center', // default - 'center'
+    titleAlignment: 'left' // default - 'center'
+  }
+});
+```
 
-  await sleep(3000);
+### Log Levels
 
-  sa.stop(spinner, 'All set!');
-  // with the config object
-  sa.stop(spinner, 'All set!', {
-    color: 'greenBright'
-  });
-  // with prebuilt log levels
-  sa.stop(spinner, 'All set!', {
-    color: 'greenBright'
-  }, { status: 'success' }); // status = 'success' | 'error' | 'info' | 'warn'
-  sa.stop(spinner, 'Something went wrong', { status: 'error' });
-  ```
+```typescript
+import sa from 'shell-artist';
+
+sa.warn('CAUTION');
+sa.error('FAILURE');
+sa.info('INFO');
+// with the config object
+sa.success(' SUCCESS ', {
+  box: {
+    title: 'success',
+    borderColor: 'green',
+  },
+  modifier: 'bold',
+});
+```
+
+### Spinner
+
+```typescript
+import sa from 'shell-artist';
+import { setTimeout as sleep } from 'node:timers/promises';
+
+const spinner = sa.start('Installing dependencies...');
+await sleep(3000);
+
+sa.stop(spinner, 'All set!');
+// with the config object
+sa.stop(spinner, 'All set!', {
+  color: 'greenBright',
+});
+// with prebuilt log levels
+sa.stop(
+  spinner,
+  'All set!',
+  {
+    color: 'greenBright',
+  },
+  'status',
+); // status = 'success' | 'error' | 'info' | 'warn'
+sa.stop(spinner, 'Something went wrong', ,'error');
+```
+
+### Gradient
+
+```typescript
+import sa from 'shell-artist';
+
+// with array of colors
+sa.applyGradient('This tool will help you write beautiful logs', [
+  'red',
+  'blue',
+  'green',
+  'yellow',
+]);
+// with prebuilt gradient
+sa.applyGradient('This tool will help you write beautiful logs', 'rainbow'); // https://github.com/bokub/gradient-string#available-built-in-gradients
+```
+
+### Animations
+
+```typescript
+import sa from 'shell-artist';
+
+sa.animate('ANIMATED HEADING', 'neon'); // https://github.com/bokub/chalk-animation#available-animations
+```

@@ -41,6 +41,7 @@ interface TBox {
 }
 
 type TStatus = 'warn' | 'info' | 'success' | 'error';
+
 /**
  * @name TStylizeTextConfig
  * @description type def for stylizeText function config parameter
@@ -52,6 +53,13 @@ interface TStylizeTextConfig {
   box?: TBox;
   emoji?: string;
 }
+
+/**
+ * @name TStatusMsgConfig
+ * @description type def for statusMsg function config parameter
+ */
+interface TStatusMsgConfig
+  extends Omit<TStylizeTextConfig, 'color' | 'bgColor'> {}
 
 /**
  * @name IShellArtistConfig
@@ -69,5 +77,6 @@ export {
   TAnimation,
   TStatus,
   TStylizeTextConfig,
+  TStatusMsgConfig,
   IShellArtistConfig,
 };

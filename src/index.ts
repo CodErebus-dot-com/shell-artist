@@ -4,7 +4,12 @@ import { has, get } from 'node-emoji';
 import gradient from 'gradient-string';
 import chalkAnimation, { Animation } from 'chalk-animation';
 import boxen from 'boxen';
-import { TStylizeTextConfig, IShellArtistConfig, TStatus } from './types';
+import {
+  TStylizeTextConfig,
+  IShellArtistConfig,
+  TStatus,
+  TStatusMsgConfig,
+} from './types';
 import { isTPrebuiltGradients } from './helpers';
 
 function stylizeText(msg: string, config?: TStylizeTextConfig): string {
@@ -51,7 +56,11 @@ function stylizeText(msg: string, config?: TStylizeTextConfig): string {
   return text;
 }
 
-function statusMsg(msg: string, config?: TStylizeTextConfig, status?: TStatus) {
+function statusMsg(
+  msg: string,
+  config?: TStatusMsgConfig | TStylizeTextConfig,
+  status?: TStatus,
+) {
   switch (status) {
     case 'warn':
       console.warn(stylizeText(msg, { ...config, color: 'yellowBright' }));
@@ -78,19 +87,19 @@ export default class sa {
     statusMsg(msg, config);
   }
 
-  static warn(msg: string, config?: TStylizeTextConfig): void {
+  static warn(msg: string, config?: TStatusMsgConfig): void {
     statusMsg(msg, config, 'warn');
   }
 
-  static error(msg: string, config?: TStylizeTextConfig): void {
+  static error(msg: string, config?: TStatusMsgConfig): void {
     statusMsg(msg, config, 'error');
   }
 
-  static success(msg: string, config?: TStylizeTextConfig): void {
+  static success(msg: string, config?: TStatusMsgConfig): void {
     statusMsg(msg, config, 'success');
   }
 
-  static info(msg: string, config?: TStylizeTextConfig): void {
+  static info(msg: string, config?: TStatusMsgConfig): void {
     statusMsg(msg, config, 'info');
   }
 
@@ -101,7 +110,7 @@ export default class sa {
   static stop(
     ora: Ora,
     msg: string,
-    config?: TStylizeTextConfig,
+    config?: TStatusMsgConfig,
     status?: TStatus,
   ): void {
     const txt = stylizeText(msg, config);
@@ -135,18 +144,14 @@ export default class sa {
     return chalkAnimation.glitch(msg);
   }
 
-  static applyGradient(
-    msg: string,
-    gradient: IShellArtistConfig['gradient'],
-  ): string {
-    let txt = msg;
+  static applyGradient(msg: string, gradient: IShellArtistConfig['gradient']) {
     if (gradient) {
       if (isTPrebuiltGradients(gradient)) {
-        txt = g[gradient](msg);
+        msg = g[gradient](msg);
       } else {
-        txt = g(gradient)(msg);
+        msg = g(gradient)(msg);
       }
     }
-    return txt;
+    statusMsg(msg);
   }
 }
