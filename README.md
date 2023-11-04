@@ -15,6 +15,7 @@ ShellArtist is a package that provides a simplified logging API. It takes some o
   - [Log Levels](#log-levels)
   - [Gradient](#gradient)
   - [Animations](#animations)
+  - [ASCII Arts](#ascii-arts)
 
 ## Features
 
@@ -25,6 +26,7 @@ ShellArtist is a package that provides a simplified logging API. It takes some o
 - Use prebuilt Status messages for your console
 - Add attractive spinners for async operations
 - Get your favorite emoticons to make it fun
+- Convert your texts into ascii arts
 
 ## Use Cases
 
@@ -39,6 +41,7 @@ ShellArtist is a package that provides a simplified logging API. It takes some o
 - [gradient-string](https://www.npmjs.com/package/gradient-string)
 - [boxen](https://www.npmjs.com/package/boxen)
 - [node-emoji](https://www.npmjs.com/package/node-emoji)
+- [figlet](https://www.npmjs.com/package/figlet)
 
 ## Usage
 
@@ -63,6 +66,12 @@ import sa from 'shell-artist';
 sa.log('Hello World');
 ```
 
+> #### Output
+>
+> ```txt
+> Hello World
+> ```
+
 ### With `config` object
 
 ```typescript
@@ -76,15 +85,19 @@ sa.log(' MY CLI APP ', {
   box: {
     title: 'package update',
     borderColor: 'green',
-    style: 'double' // https://github.com/sindresorhus/boxen/tree/main#borderstyle (default - 'single')
+    style: 'double', // https://github.com/sindresorhus/boxen/tree/main#borderstyle (default - 'single')
     padding: 2, // default - 1
     margin: 2, // default - 1
     dimBorder: true, // default - false
-    textAligment: 'center', // default - 'center'
-    titleAlignment: 'left' // default - 'center'
-  }
+    textAlignment: 'center', // default - 'center'
+    titleAlignment: 'left', // default - 'center'
+  },
 });
 ```
+
+> #### Output
+>
+> ![with-config](https://i.imgur.com/54QJlcc.png)
 
 ### Log Levels
 
@@ -101,8 +114,13 @@ sa.success(' SUCCESS ', {
     borderColor: 'green',
   },
   modifier: 'bold',
+  emoji: 'rocket',
 });
 ```
+
+> #### Output
+>
+> ![log-levels](https://i.imgur.com/fHLsa38.png)
 
 ### Spinner
 
@@ -116,19 +134,30 @@ await sleep(3000);
 sa.stop(spinner, 'All set!');
 // with the config object
 sa.stop(spinner, 'All set!', {
-  color: 'greenBright',
+  modifier: 'strikethrough',
 });
 // with prebuilt log levels
 sa.stop(
   spinner,
-  'All set!',
+  'Build ran successfully',
   {
-    color: 'greenBright',
+    modifier: 'bold',
   },
-  'status',
+  'success',
 ); // status = 'success' | 'error' | 'info' | 'warn'
-sa.stop(spinner, 'Something went wrong', ,'error');
+sa.stop(spinner, 'Something went wrong', undefined, 'error');
 ```
+
+> Output
+>
+> ```txt
+>   All set!
+>   All set!
+> ✔ Build ran successfully
+> ✖ Something went wrong
+>
+> (will be updated with gifs)
+> ```
 
 ### Gradient
 
@@ -146,6 +175,10 @@ sa.applyGradient('This tool will help you write beautiful logs', [
 sa.applyGradient('This tool will help you write beautiful logs', 'rainbow'); // https://github.com/bokub/gradient-string#available-built-in-gradients
 ```
 
+> Output
+>
+> ![gradient](https://i.imgur.com/OfuY2Di.png)
+
 ### Animations
 
 ```typescript
@@ -153,3 +186,25 @@ import sa from 'shell-artist';
 
 sa.animate('ANIMATED HEADING', 'neon'); // https://github.com/bokub/chalk-animation#available-animations
 ```
+
+> #### Output
+>
+> ![animate](https://imgur.com/dObMElL.gif)
+
+### ASCII Arts
+
+```typescript
+import sa from 'shell-artist';
+
+sa.createAscii('Sample ASCII TeXt', {
+  font: 'Ghost', // https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/figlet/index.d.ts (default - 'Standard')
+  horizontalLayout: 'full', // "default" | "full" | "fitted" | "controlled smushing" | "universal smushing" | undefined;
+  verticalLayout: 'fitted', // "default" | "full" | "fitted" | "controlled smushing" | "universal smushing" | undefined;
+  width: 80,
+  whitespaceBreak: true,
+});
+```
+
+> #### Output
+>
+> ![ascii-art](https://imgur.com/6wnxkSo.png)

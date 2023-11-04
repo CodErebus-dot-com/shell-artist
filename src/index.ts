@@ -4,6 +4,7 @@ import { has, get } from 'node-emoji';
 import gradient from 'gradient-string';
 import chalkAnimation, { Animation } from 'chalk-animation';
 import boxen from 'boxen';
+import figlet from 'figlet';
 import {
   TStylizeTextConfig,
   IShellArtistConfig,
@@ -153,5 +154,18 @@ export default class sa {
       }
     }
     statusMsg(msg);
+  }
+
+  static createAscii(msg: string, ascii?: IShellArtistConfig['ascii']) {
+    statusMsg(
+      figlet.textSync(msg, {
+        font: 'Standard' ?? ascii?.font,
+        horizontalLayout: 'default' ?? ascii?.horizontalLayout,
+        verticalLayout: 'default' ?? ascii?.verticalLayout,
+        width: 80 ?? ascii?.width,
+        whitespaceBreak: true ?? ascii?.whitespaceBreak,
+        ...ascii,
+      }),
+    );
   }
 }

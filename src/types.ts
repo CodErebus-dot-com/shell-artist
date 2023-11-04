@@ -1,7 +1,7 @@
 import { ForegroundColor, BackgroundColor, Modifiers } from 'chalk';
 import { Boxes, Spacing } from 'boxen';
+import { Fonts, KerningMethods } from 'figlet';
 import { PREBUILT_GRADIENTS, PREBUILT_ANIMATIONS } from './constants';
-
 type TPrebuiltGradients = (typeof PREBUILT_GRADIENTS)[number];
 type TPrebuiltAnimations = (typeof PREBUILT_ANIMATIONS)[number];
 
@@ -40,6 +40,18 @@ interface TBox {
   titleAlignment?: 'left' | 'right' | 'center';
 }
 
+/**
+ * @name TAscii
+ * @description type def for ascii property which is of type `Options` from `figlet`
+ */
+interface TAscii {
+  horizontalLayout?: KerningMethods;
+  verticalLayout?: KerningMethods;
+  font?: Fonts;
+  width?: number;
+  whitespaceBreak?: boolean;
+}
+
 type TStatus = 'warn' | 'info' | 'success' | 'error';
 
 /**
@@ -68,6 +80,7 @@ interface TStatusMsgConfig
 interface IShellArtistConfig extends TStylizeTextConfig {
   gradient?: TGradient;
   animation?: TAnimation;
+  ascii?: TAscii;
 }
 
 export {

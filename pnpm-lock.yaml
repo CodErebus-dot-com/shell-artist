@@ -14,6 +14,9 @@ dependencies:
   chalk-animation:
     specifier: ^2.0.3
     version: 2.0.3
+  figlet:
+    specifier: ^1.7.0
+    version: 1.7.0
   gradient-string:
     specifier: ^2.0.2
     version: 2.0.2
@@ -31,6 +34,9 @@ devDependencies:
   '@types/chalk-animation':
     specifier: ^1.6.1
     version: 1.6.1
+  '@types/figlet':
+    specifier: ^1.5.7
+    version: 1.5.7
   '@types/gradient-string':
     specifier: ^1.1.3
     version: 1.1.3
@@ -1823,6 +1829,10 @@ packages:
     resolution: {integrity: sha512-MSuZqFkBeKcik4oMzd/BjaTRYkLpNftRSYkI/oszmckHAZOTSKslWR1CRdURwsxXBgYHPRlb5JM6Cx+tkyXUAg==}
     dev: true
 
+  /@types/figlet@1.5.7:
+    resolution: {integrity: sha512-0+XwDLeH346mAl3fmw/AaEctBrhkcJl0wZezoNUQ5Tg6J5YW7xL2v9hH3Yg5L4dk/sogEdQexTrNncqjGKwoVw==}
+    dev: true
+
   /@types/gradient-string@1.1.3:
     resolution: {integrity: sha512-IEkFNDHeANirKhT0BkvHHTG4x+cOaC6XO7PcxKsKudCH9MdBD5V2iXw4qmrJ8lB7r9pAagv95V90RMhI53y/eA==}
     dependencies:
@@ -3116,6 +3126,12 @@ packages:
     dependencies:
       reusify: 1.0.4
     dev: true
+
+  /figlet@1.7.0:
+    resolution: {integrity: sha512-gO8l3wvqo0V7wEFLXPbkX83b7MVjRrk1oRLfYlZXol8nEpb/ON9pcKLI4qpBv5YtOTfrINtqb7b40iYY2FTWFg==}
+    engines: {node: '>= 0.4.0'}
+    hasBin: true
+    dev: false
 
   /figures@3.2.0:
     resolution: {integrity: sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==}
