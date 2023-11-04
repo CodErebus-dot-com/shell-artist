@@ -5,6 +5,11 @@
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "module",
+  "homepage": "https://github.com/CodErebus-dot-com/shell-artist#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodErebus-dot-com/shell-artist"
+  },
   "keywords": [
     "cli",
     "console",
