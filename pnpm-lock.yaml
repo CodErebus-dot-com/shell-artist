@@ -5,12 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  ansi-align:
-    specifier: ^3.0.1
-    version: 3.0.1
   boxen:
     specifier: ^7.1.1
     version: 7.1.1
+  center-align:
+    specifier: ^1.0.1
+    version: 1.0.1
   chalk:
     specifier: ^4.1.2
     version: 4.1.2
@@ -34,9 +34,9 @@ devDependencies:
   '@modern-js/module-tools':
     specifier: 2.36.0
     version: 2.36.0(typescript@5.0.4)
-  '@types/ansi-align':
-    specifier: ^3.0.2
-    version: 3.0.2
+  '@types/center-align':
+    specifier: ^1.0.1
+    version: 1.0.1
   '@types/chalk-animation':
     specifier: ^1.6.1
     version: 1.6.1
@@ -1831,8 +1831,8 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: true
 
-  /@types/ansi-align@3.0.2:
-    resolution: {integrity: sha512-rrD0xnpCHJPQyNiDffZ+egdwQftzZBhThS6lQKtzR6gCH0489SOiFfhCmzNZQE0lAKtGX6jMJvtlomjpBUtbjw==}
+  /@types/center-align@1.0.1:
+    resolution: {integrity: sha512-3v9SN52gz6w5OQRJt4zqXeMBHrKFrisbsTgESr9US6DK0xVGnpN1VkAhKelAiEIYGsZUkkEhtbwUDCyPXQLMgA==}
     dev: true
 
   /@types/chalk-animation@1.6.1:
@@ -1963,6 +1963,15 @@ packages:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
     dev: true
+
+  /align-text@1.0.2:
+    resolution: {integrity: sha512-uBPDs72zrRTdiTBY0YjBbuBOdXtRyT4qsKPb4bL4O7vH4utz/7KjwTJVsVbdThxMbVzkRGAfk8Ml3xoMvXSEYw==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      kind-of: 5.1.0
+      longest: 2.0.1
+      repeat-string: 1.6.1
+    dev: false
 
   /ansi-align@3.0.1:
     resolution: {integrity: sha512-IOfwwBF5iczOjp/WeY4YxyjqAFMQoZufdQWDd19SEExbVLNXqvpzSJ/M7Za4/sCPmQ0+GRquoA7bGcINcxew6w==}
@@ -2277,6 +2286,14 @@ packages:
   /caniuse-lite@1.0.30001559:
     resolution: {integrity: sha512-cPiMKZgqgkg5LY3/ntGeLFUpi6tzddBNS58A4tnTgQw1zON7u2sZMU7SzOeVH4tj20++9ggL+V6FDOFMTaFFYA==}
     dev: true
+
+  /center-align@1.0.1:
+    resolution: {integrity: sha512-j6Ba1Vwtu0i9CUfM5VicnMqOsNRMYnNAoTUTB/EzUFhBKkqFPD5UE2WTCSIy49OnbjTEnJ0t2CFPYMbKNrUi/A==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      align-text: 1.0.2
+      repeat-string: 1.6.1
+    dev: false
 
   /chalk-animation@2.0.3:
     resolution: {integrity: sha512-Q/GJj6eqcI3HUSz72hUIZtjTlzIHXet8GOteO79Fzx8FMlSywCNP8tpX8uiOOdeMSXFXTXCajZ/Y2FvcU3MOLA==}
@@ -3898,6 +3915,11 @@ packages:
       json-buffer: 3.0.1
     dev: true
 
+  /kind-of@5.1.0:
+    resolution: {integrity: sha512-NGEErnH6F2vUuXDh+OlbcKW7/wOcfdRHaZ7VWtqCztfHri/++YKmP51OdWeGPuqCOba6kk2OTe5d02VmTB80Pw==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   /kind-of@6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
     engines: {node: '>=0.10.0'}
@@ -4043,6 +4065,11 @@ packages:
       slice-ansi: 4.0.0
       wrap-ansi: 6.2.0
     dev: true
+
+  /longest@2.0.1:
+    resolution: {integrity: sha512-Ajzxb8CM6WAnFjgiloPsI3bF+WCxcvhdIG3KNA2KN962+tdBsHcuQ4k4qX/EcS/2CRkcc0iAkR956Nib6aXU/Q==}
+    engines: {node: '>=0.10.0'}
+    dev: false
 
   /lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
@@ -4830,6 +4857,11 @@ packages:
       define-properties: 1.2.1
       set-function-name: 2.0.1
     dev: true
+
+  /repeat-string@1.6.1:
+    resolution: {integrity: sha512-PV0dzCYDNfRi1jCDbJzpW7jNNDRuCOG/jI5ctQcGKt/clZD+YcPS3yIlWuTJMmESC8aevCFmWJy5wjAFgNqN6w==}
+    engines: {node: '>=0.10'}
+    dev: false
 
   /require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}

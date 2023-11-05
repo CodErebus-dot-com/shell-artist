@@ -5,7 +5,7 @@ import gradient from 'gradient-string';
 import chalkAnimation, { Animation } from 'chalk-animation';
 import boxen from 'boxen';
 import figlet from 'figlet';
-import ansiAlign from 'ansi-align';
+import center from 'center-align';
 import {
   TStylizeTextConfig,
   IShellArtistConfig,
@@ -55,8 +55,8 @@ function stylizeText(msg: string, config?: TStylizeTextConfig): string {
     }
     text = `${e} ${text}`;
   }
-  if (config.align) {
-    text = ansiAlign(text, { align: config.align });
+  if (config.center) {
+    text = center(text, 100);
   }
 
   return text;

@@ -42,6 +42,7 @@ ShellArtist is a package that provides a simplified logging API. It takes some o
 - [boxen](https://www.npmjs.com/package/boxen)
 - [node-emoji](https://www.npmjs.com/package/node-emoji)
 - [figlet](https://www.npmjs.com/package/figlet)
+- [center-align](https://www.npmjs.com/package/center-align)
 
 ## Usage
 
