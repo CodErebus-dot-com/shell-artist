@@ -64,6 +64,7 @@ interface TStylizeTextConfig {
   modifier?: typeof Modifiers;
   box?: TBox;
   emoji?: string;
+  align?: 'left' | 'center' | 'right';
 }
 
 /**

@@ -5,6 +5,7 @@ import gradient from 'gradient-string';
 import chalkAnimation, { Animation } from 'chalk-animation';
 import boxen from 'boxen';
 import figlet from 'figlet';
+import ansiAlign from 'ansi-align';
 import {
   TStylizeTextConfig,
   IShellArtistConfig,
@@ -54,6 +55,10 @@ function stylizeText(msg: string, config?: TStylizeTextConfig): string {
     }
     text = `${e} ${text}`;
   }
+  if (config.align) {
+    text = ansiAlign(text, { align: config.align });
+  }
+
   return text;
 }
 
@@ -145,7 +150,10 @@ export default class sa {
     return chalkAnimation.glitch(msg);
   }
 
-  static applyGradient(msg: string, gradient: IShellArtistConfig['gradient']) {
+  static applyGradient(
+    msg: string,
+    gradient: IShellArtistConfig['gradient'],
+  ): string {
     if (gradient) {
       if (isTPrebuiltGradients(gradient)) {
         msg = g[gradient](msg);
@@ -153,19 +161,17 @@ export default class sa {
         msg = g(gradient)(msg);
       }
     }
-    statusMsg(msg);
+    return msg;
   }
 
-  static createAscii(msg: string, ascii?: IShellArtistConfig['ascii']) {
-    statusMsg(
-      figlet.textSync(msg, {
-        font: 'Standard' ?? ascii?.font,
-        horizontalLayout: 'default' ?? ascii?.horizontalLayout,
-        verticalLayout: 'default' ?? ascii?.verticalLayout,
-        width: 80 ?? ascii?.width,
-        whitespaceBreak: true ?? ascii?.whitespaceBreak,
-        ...ascii,
-      }),
-    );
+  static createAscii(msg: string, ascii?: IShellArtistConfig['ascii']): string {
+    const asciiTxt = figlet.textSync(msg, {
+      font: 'Standard' ?? ascii?.font,
+      horizontalLayout: 'default' ?? ascii?.horizontalLayout,
+      verticalLayout: 'default' ?? ascii?.verticalLayout,
+      width: 80 ?? ascii?.width,
+      whitespaceBreak: true ?? ascii?.whitespaceBreak,
+    });
+    return asciiTxt;
   }
 }

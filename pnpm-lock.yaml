@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  ansi-align:
+    specifier: ^3.0.1
+    version: 3.0.1
   boxen:
     specifier: ^7.1.1
     version: 7.1.1
@@ -31,6 +34,9 @@ devDependencies:
   '@modern-js/module-tools':
     specifier: 2.36.0
     version: 2.36.0(typescript@5.0.4)
+  '@types/ansi-align':
+    specifier: ^3.0.2
+    version: 3.0.2
   '@types/chalk-animation':
     specifier: ^1.6.1
     version: 1.6.1
@@ -1823,6 +1829,10 @@ packages:
   /@trysound/sax@0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
+    dev: true
+
+  /@types/ansi-align@3.0.2:
+    resolution: {integrity: sha512-rrD0xnpCHJPQyNiDffZ+egdwQftzZBhThS6lQKtzR6gCH0489SOiFfhCmzNZQE0lAKtGX6jMJvtlomjpBUtbjw==}
     dev: true
 
   /@types/chalk-animation@1.6.1:

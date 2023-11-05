@@ -165,14 +165,20 @@ sa.stop(spinner, 'Something went wrong', undefined, 'error');
 import sa from 'shell-artist';
 
 // with array of colors
-sa.applyGradient('This tool will help you write beautiful logs', [
+const grad1 = sa.applyGradient('This tool will help you write beautiful logs', [
   'red',
   'blue',
   'green',
   'yellow',
 ]);
 // with prebuilt gradient
-sa.applyGradient('This tool will help you write beautiful logs', 'rainbow'); // https://github.com/bokub/gradient-string#available-built-in-gradients
+const grad2 = sa.applyGradient(
+  'This tool will help you write beautiful logs',
+  'rainbow',
+); // https://github.com/bokub/gradient-string#available-built-in-gradients
+
+sa.log(grad1);
+sa.log(grad2);
 ```
 
 > Output
@@ -196,13 +202,15 @@ sa.animate('ANIMATED HEADING', 'neon'); // https://github.com/bokub/chalk-animat
 ```typescript
 import sa from 'shell-artist';
 
-sa.createAscii('Sample ASCII TeXt', {
+const myAsciiText = sa.createAscii('Sample ASCII TeXt', {
   font: 'Ghost', // https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/figlet/index.d.ts (default - 'Standard')
   horizontalLayout: 'full', // "default" | "full" | "fitted" | "controlled smushing" | "universal smushing" | undefined;
   verticalLayout: 'fitted', // "default" | "full" | "fitted" | "controlled smushing" | "universal smushing" | undefined;
   width: 80,
   whitespaceBreak: true,
 });
+
+sa.log(myAsciiText);
 ```
 
 > #### Output
