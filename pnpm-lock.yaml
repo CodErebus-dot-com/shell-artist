@@ -17,6 +17,9 @@ dependencies:
   chalk-animation:
     specifier: ^2.0.3
     version: 2.0.3
+  cli-progress:
+    specifier: ^3.12.0
+    version: 3.12.0
   figlet:
     specifier: ^1.7.0
     version: 1.7.0
@@ -40,6 +43,9 @@ devDependencies:
   '@types/chalk-animation':
     specifier: ^1.6.1
     version: 1.6.1
+  '@types/cli-progress':
+    specifier: ^3.11.5
+    version: 3.11.5
   '@types/figlet':
     specifier: ^1.5.7
     version: 1.5.7
@@ -1839,6 +1845,12 @@ packages:
     resolution: {integrity: sha512-MSuZqFkBeKcik4oMzd/BjaTRYkLpNftRSYkI/oszmckHAZOTSKslWR1CRdURwsxXBgYHPRlb5JM6Cx+tkyXUAg==}
     dev: true
 
+  /@types/cli-progress@3.11.5:
+    resolution: {integrity: sha512-D4PbNRbviKyppS5ivBGyFO29POlySLmA2HyUFE4p5QGazAMM3CwkKWcvTl8gvElSuxRh6FPKL8XmidX873ou4g==}
+    dependencies:
+      '@types/node': 16.11.68
+    dev: true
+
   /@types/figlet@1.5.7:
     resolution: {integrity: sha512-0+XwDLeH346mAl3fmw/AaEctBrhkcJl0wZezoNUQ5Tg6J5YW7xL2v9hH3Yg5L4dk/sogEdQexTrNncqjGKwoVw==}
     dev: true
@@ -2386,6 +2398,13 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       restore-cursor: 4.0.0
+    dev: false
+
+  /cli-progress@3.12.0:
+    resolution: {integrity: sha512-tRkV3HJ1ASwm19THiiLIXLO7Im7wlTuKnvkYaTkyoAPefqjNg7W7DHKUlGRxy9vxDvbyCYQkQozvptuMkGCg8A==}
+    engines: {node: '>=4'}
+    dependencies:
+      string-width: 4.2.3
     dev: false
 
   /cli-spinners@2.9.1:

@@ -62,6 +62,34 @@ function stylizeText(msg: string, config?: TStylizeTextConfig): string {
   return text;
 }
 
+function statusSuccess(
+  msg: string,
+  config?: TStatusMsgConfig | TStylizeTextConfig,
+): string {
+  return stylizeText(msg, { ...config, color: 'greenBright' });
+}
+
+function statusError(
+  msg: string,
+  config?: TStatusMsgConfig | TStylizeTextConfig,
+): string {
+  return stylizeText(msg, { ...config, color: 'redBright' });
+}
+
+function statusInfo(
+  msg: string,
+  config?: TStatusMsgConfig | TStylizeTextConfig,
+): string {
+  return stylizeText(msg, { ...config, color: 'blueBright' });
+}
+
+function statusWarn(
+  msg: string,
+  config?: TStatusMsgConfig | TStylizeTextConfig,
+): string {
+  return stylizeText(msg, { ...config, color: 'yellowBright' });
+}
+
 function statusMsg(
   msg: string,
   config?: TStatusMsgConfig | TStylizeTextConfig,
@@ -69,16 +97,16 @@ function statusMsg(
 ) {
   switch (status) {
     case 'warn':
-      console.warn(stylizeText(msg, { ...config, color: 'yellowBright' }));
+      console.warn(statusWarn(msg, config));
       break;
     case 'error':
-      console.warn(stylizeText(msg, { ...config, color: 'redBright' }));
+      console.warn(statusError(msg, config));
       break;
     case 'info':
-      console.warn(stylizeText(msg, { ...config, color: 'blueBright' }));
+      console.warn(statusInfo(msg, config));
       break;
     case 'success':
-      console.log(stylizeText(msg, { ...config, color: 'greenBright' }));
+      console.log(statusSuccess(msg, config));
       break;
     default:
       console.log(stylizeText(msg, config));
@@ -116,22 +144,22 @@ export default class sa {
   static stop(
     ora: Ora,
     msg: string,
-    config?: TStatusMsgConfig,
+    config?: TStylizeTextConfig,
     status?: TStatus,
   ): void {
     const txt = stylizeText(msg, config);
     switch (status) {
       case 'warn':
-        ora.warn(txt);
+        ora.warn(statusWarn(txt));
         break;
       case 'info':
-        ora.info(txt);
+        ora.info(statusInfo(txt));
         break;
       case 'success':
-        ora.succeed(txt);
+        ora.succeed(statusSuccess(txt));
         break;
       case 'error':
-        ora.fail(txt);
+        ora.fail(statusError(txt));
         break;
       default:
         ora.stopAndPersist({ text: txt });
