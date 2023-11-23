@@ -1,7 +1,7 @@
 {
   "name": "shell-artist",
   "description": "shell-artist is a package that provides a simplified logging API. It takes some of the best npm packages, ties them together and wraps them around to your favorite Web API i.e. console.",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "module",

@@ -277,7 +277,7 @@ export default class sa {
   static applyGradient(
     msg: string,
     gradient: IShellArtistConfig['gradient'],
-  ): string {
+  ): void {
     if (gradient) {
       if (isTPrebuiltGradients(gradient)) {
         msg = g[gradient](msg);
@@ -285,7 +285,7 @@ export default class sa {
         msg = g(gradient)(msg);
       }
     }
-    return msg;
+    sa.log(msg);
   }
 
   /**
@@ -294,7 +294,7 @@ export default class sa {
    * @param {IShellArtistConfig['ascii']} ascii configuration for creating custom ascii arts
    * @returns {string}
    */
-  static createAscii(msg: string, ascii?: IShellArtistConfig['ascii']): string {
+  static createAscii(msg: string, ascii?: IShellArtistConfig['ascii']): void {
     const asciiTxt = figlet.textSync(msg, {
       font: 'Standard' ?? ascii?.font,
       horizontalLayout: 'default' ?? ascii?.horizontalLayout,
@@ -302,6 +302,6 @@ export default class sa {
       width: 80 ?? ascii?.width,
       whitespaceBreak: true ?? ascii?.whitespaceBreak,
     });
-    return asciiTxt;
+    sa.log(asciiTxt);
   }
 }
