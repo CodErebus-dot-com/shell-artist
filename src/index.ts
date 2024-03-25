@@ -1,18 +1,18 @@
-import chalk, { Chalk } from 'chalk';
-import ora, { Ora } from 'ora';
-import { has, get } from 'node-emoji';
-import gradient from 'gradient-string';
-import chalkAnimation, { Animation } from 'chalk-animation';
 import boxen from 'boxen';
-import figlet from 'figlet';
 import center from 'center-align';
+import chalk, { Chalk } from 'chalk';
+import chalkAnimation, { Animation } from 'chalk-animation';
+import figlet from 'figlet';
+import gradient from 'gradient-string';
+import { get, has } from 'node-emoji';
+import ora, { Ora } from 'ora';
+import { isTPrebuiltGradients } from './helpers';
 import {
-  TStylizeTextConfig,
   IShellArtistConfig,
   TStatus,
   TStatusMsgConfig,
+  TStylizeTextConfig,
 } from './types';
-import { isTPrebuiltGradients } from './helpers';
 
 function stylizeText(msg: string, config?: TStylizeTextConfig): string {
   let text = msg;
@@ -277,7 +277,7 @@ export default class sa {
   static applyGradient(
     msg: string,
     gradient: IShellArtistConfig['gradient'],
-  ): void {
+  ): string {
     if (gradient) {
       if (isTPrebuiltGradients(gradient)) {
         msg = g[gradient](msg);
@@ -285,7 +285,7 @@ export default class sa {
         msg = g(gradient)(msg);
       }
     }
-    sa.log(msg);
+    return msg;
   }
 
   /**
@@ -294,7 +294,7 @@ export default class sa {
    * @param {IShellArtistConfig['ascii']} ascii configuration for creating custom ascii arts
    * @returns {string}
    */
-  static createAscii(msg: string, ascii?: IShellArtistConfig['ascii']): void {
+  static createAscii(msg: string, ascii?: IShellArtistConfig['ascii']): string {
     const asciiTxt = figlet.textSync(msg, {
       font: 'Standard' ?? ascii?.font,
       horizontalLayout: 'default' ?? ascii?.horizontalLayout,
@@ -302,6 +302,6 @@ export default class sa {
       width: 80 ?? ascii?.width,
       whitespaceBreak: true ?? ascii?.whitespaceBreak,
     });
-    sa.log(asciiTxt);
+    return asciiTxt;
   }
 }
